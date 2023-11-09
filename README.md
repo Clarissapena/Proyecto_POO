@@ -24,3 +24,4 @@ No se podrán agregar ni consultar películas que no se encuentren dentro de la 
 No se podrá acceder a la plataforma si no es con el “Nombre” y “Contraseña” correctos.
 No se podrá retirar una película de tu “Lista de películas”
 
+
