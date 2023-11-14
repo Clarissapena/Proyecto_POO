@@ -34,5 +34,3 @@ void Registro::verificador(string usuario, string contrasena) {
     cout << "Nombre de usuario o contraseña incorrectos" << endl;
   }
 }
-
-
