@@ -16,21 +16,24 @@ public:
   Registro();
 
   // Metodos
-  void verificador(string usuario, string contrasena);
+  bool verificador(string usuario, string contrasena);
 };
 
 // Constructor por omision
 Registro::Registro() {
 
-  usuarioNube = "Usuario01";
+  usuarioNube = "usuario01";
   contrasenaNube = "123";
 }
 
 // Verificando los datos
-void Registro::verificador(string usuario, string contrasena) {
+bool Registro::verificador(string usuario, string contrasena) {
   if ((usuario == usuarioNube) && (contrasena == contrasenaNube)) {
+    cout << "---------------------------" << endl;
     cout << "Ingreso de sesión con éxito" << endl;
+    return true; // Verificación exitosa
   } else {
-    cout << "Nombre de usuario o contraseña incorrectos" << endl;
+    cout << endl;
+    return false; // Verificación fallida
   }
 }

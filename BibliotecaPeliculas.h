@@ -1,5 +1,5 @@
-// BibliotecaPeliculas.h
-
+// Este archivo contiene la biblioteca y metodos de busqueda
+#pragma once
 #include "Pelicula.h"
 #include <iostream>
 #include <string>
@@ -7,20 +7,20 @@
 
 using namespace std;
 
+//-------------------Clase BibliotecaPeliculas--------------------------
+
 class BibliotecaPeliculas {
 private:
-  // Atributos privados
   vector<Pelicula> peliculasInformacion;
 
 public:
-  // Atributos públicos
-
   // Métodos
   //(Agregar películas)
   void agregarPelicula(Pelicula peliculaInfo);
 
   //(Buscar películas)
   void buscarPeliculas(int filtro, string valor);
+  Pelicula buscarPeliculaPorNombre(string nombre);
 };
 
 // Implementación del método agregarPelicula
@@ -64,4 +64,13 @@ void BibliotecaPeliculas::buscarPeliculas(int filtro, string valor) {
       break;
     }
   }
+}
+
+Pelicula BibliotecaPeliculas::buscarPeliculaPorNombre(string nombre) {
+  for (Pelicula pelicula : peliculasInformacion) {
+    if (pelicula.getNombre() == nombre) {
+      return pelicula;
+    }
+  }
+  return Pelicula();
 }
