@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "Comentario.h" 
 
 using namespace std;
 
@@ -17,6 +18,7 @@ protected:
   string genero;
   string puntuacion;
   string presentacion;
+  vector<Comentario> comentarios; 
 
 public:
   // Atributos publicos
@@ -32,6 +34,13 @@ public:
   string getGenero();
   string getPuntuacion();
   string getPresentacion();
+
+   // Setter
+  void setPresentacion(string presentacion2);
+
+  // Métodos para comentarios
+  void agregarComentario(const Comentario& comentario);
+  const vector<Comentario>& getComentarios() const;
   
 };
 
@@ -59,13 +68,28 @@ string Pelicula::getGenero() { return genero; }
 string Pelicula::getPuntuacion() { return puntuacion; }
 string Pelicula::getPresentacion() { return presentacion; }
 
+// Setters
+void Pelicula::setPresentacion(string presentacion2){
+  presentacion = presentacion2;
+}
+
 // Generar una carta descrptiva
 void Pelicula::generarCarta() {
   cout << "----- Carta Descriptiva -----" << endl;
-  cout << "Nombre: " << getNombre() << endl;
-  cout << "Año: " << getAnno() << endl;
-  cout << "Género: " << getGenero() << endl;
-  cout << "Puntuación: " << getPuntuacion() << endl;
-  cout << "Presentación: " << getPresentacion() << endl;
+  cout << "Nombre: " << nombre << endl;
+  cout << "Año: " << anno << endl;
+  cout << "Género: " << genero << endl;
+  cout << "Puntuación: " << puntuacion << endl;
+  cout << "Presentación: " << presentacion << endl;
   cout << "-----------------------------" << endl;
 }
+
+// Métodos para comentarios
+void Pelicula::agregarComentario(const Comentario& comentario) {
+    comentarios.push_back(comentario);
+}
+
+const vector<Comentario>& Pelicula::getComentarios() const {
+    return comentarios;
+}
+

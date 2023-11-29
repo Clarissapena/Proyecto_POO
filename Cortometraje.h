@@ -12,9 +12,8 @@ private:
 
 public:
   Cortometraje();
-  Cortometraje(string nombre, int anno, string genero, string puntuacion, string presentacion);
+  Cortometraje(string nombre, int anno, string genero, string puntuacion, string presentacion): Pelicula(nombre, anno, genero, puntuacion, presentacion) {};
   string getFestivalCine();
-  void setPresentacion();
 };
 
 // Constructor por omision

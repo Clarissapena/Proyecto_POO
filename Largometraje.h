@@ -13,7 +13,7 @@ private:
 
 public:
   Largometraje();
-  Largometraje(string nombre, int anno, string genero, string puntuacion, string presentacion);
+  Largometraje(string nombre, int anno, string genero, string puntuacion, string presentacion): Pelicula(nombre, anno, genero, puntuacion, presentacion) {};
   string getEstudioCinematografico();
 };
 
@@ -25,4 +25,5 @@ Largometraje::Largometraje() {
 string Largometraje::getEstudioCinematografico(){ 
   return estudioCinematografico; 
 }
+
 

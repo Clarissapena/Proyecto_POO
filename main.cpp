@@ -1,9 +1,11 @@
 // Archivos y librerias que se incluyen en el proyecto
+// Toma en cuenta que el usuario es "usuario01" y contraseña "123"
 #include "BibliotecaPeliculas.h"
 #include "Cortometraje.h"
 #include "Largometraje.h"
 #include "Registro.h"
 #include "Pelicula.h"
+#include "Comentario.h"
 #include <iostream>
 #include <string>
 
@@ -43,8 +45,11 @@ int main() {
   cout << "----------------------------------" << endl;
 
   // Crear un largometraje
-  Largometraje largometraje1("Titanic", 1997, "Drama", "9",
-                             "20th Century Studios Paramount Pictures");
+  Largometraje largometraje1("Titanic", 1997, "Drama", "9", "");
+
+  // Aqui se hace uso del set estudio para incorporar informacion nueva
+  largometraje1.setPresentacion("Paramount Pictures");
+  
   Largometraje largometraje2("Matrix", 1999, "Ciencia ficción", "8",
                              "Warner Bros. Pictures");
   Largometraje largometraje3("El Padrino", 1972, "Ciencia ficcion", "10",
@@ -115,7 +120,7 @@ int main() {
   } break;
   case 4: {
     string valor;
-    cout << "Ingrese la puntuación de la película: ";
+    cout << "Ingrese la puntuación de la película del 1 al 10: ";
     cin >> valor;
     biblioteca.buscarPeliculas(filtro, valor);
   } break;
@@ -136,11 +141,38 @@ int main() {
   Pelicula peliculaElegida = biblioteca.buscarPeliculaPorNombre(nombrePelicula);
   if (peliculaElegida.getNombre() != "") {
     // Crear una carta descritiva
-    Pelicula carta;
-    carta.generarCarta();
-  } else {
-    cout << "No se encontró ninguna película con esa descripción." << endl;
-  }
+    peliculaElegida.generarCarta();
 
-  return 0;
+    // Solicitar al usuario que ingrese un comentario
+    string nombreUsuario;
+    float puntuacion;
+    string comentario;
+
+    // Preguntar al usuario si desea agregar un comentario
+      string respuesta;
+      cout << "¿Deseas agregar un comentario a esta película? (Si/No): ";
+      getline(cin, respuesta);
+
+      if (respuesta == "Si") {
+          // Ingresa lo que opinas de la pelicula
+          cout << "----- Escribe un comentario -----" << endl;
+          cout << "Ingresa tu nombre: ";
+          getline(cin, nombreUsuario);
+      
+          cout << "Ingresa tu puntuación para la película (del 1 al 10): ";
+          cin >> puntuacion;
+      
+          cout << "Ingresa tu comentario: ";
+          cin.ignore(); // Ignorar el salto de línea
+          getline(cin, comentario);
+      
+          // Crear un objeto Comentario y agregarlo a la película
+          Comentario nuevoComentario(nombreUsuario, puntuacion, comentario);
+          peliculaElegida.agregarComentario(nuevoComentario);
+      
+          cout << "¡Comentario agregado exitosamente!" << endl;
+   
+   return 0;
+    }
+  }
 }
