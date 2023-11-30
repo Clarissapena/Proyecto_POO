@@ -12,16 +12,13 @@ private:
 
 public:
   Cortometraje();
-  Cortometraje(string nombre, int anno, string genero, string puntuacion, string presentacion): Pelicula(nombre, anno, genero, puntuacion, presentacion) {};
+  Cortometraje(string nombre, int anno, string genero, string puntuacion,
+               string presentacion)
+      : Pelicula(nombre, anno, genero, puntuacion, presentacion){};
   string getFestivalCine();
 };
 
 // Constructor por omision
-Cortometraje::Cortometraje(){ 
-  festivalCine = presentacion; 
-}
+Cortometraje::Cortometraje() { festivalCine = presentacion; }
 
-string Cortometraje::getFestivalCine(){ 
-  return festivalCine; 
-}
-
+string Cortometraje::getFestivalCine() { return festivalCine; }

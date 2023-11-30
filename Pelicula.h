@@ -1,9 +1,9 @@
 // Este archivo contiene estrctura de una pelicula
 #pragma once
+#include "Comentario.h"
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Comentario.h" 
 
 using namespace std;
 
@@ -18,7 +18,7 @@ protected:
   string genero;
   string puntuacion;
   string presentacion;
-  vector<Comentario> comentarios; 
+  vector<Comentario> comentarios;
 
 public:
   // Atributos publicos
@@ -26,7 +26,8 @@ public:
 
   // Atributos para constructor por omision
   Pelicula();
-  Pelicula(string nombre, int anno, string genero, string puntuacion, string presentacion);
+  Pelicula(string nombre, int anno, string genero, string puntuacion,
+           string presentacion);
 
   // Getters
   string getNombre();
@@ -35,13 +36,17 @@ public:
   string getPuntuacion();
   string getPresentacion();
 
-   // Setter
+  // Setter
   void setPresentacion(string presentacion2);
+  void setNombre(string);
+  void setAnno(int);
+  void setGenero(string);
+  void setPuntuacion(string);
 
   // Métodos para comentarios
-  void agregarComentario(const Comentario& comentario);
-  const vector<Comentario>& getComentarios() const;
-  
+  void agregarComentario(string nombreUsuario, int puntuacion,
+                         string comentario);
+  const vector<Comentario> &getComentarios() const;
 };
 
 // Constructor por omision
@@ -53,7 +58,8 @@ Pelicula::Pelicula() {
   presentacion = "";
 }
 
-Pelicula::Pelicula(string nombre, int anno, string genero, string puntuacion, string presentacion) {
+Pelicula::Pelicula(string nombre, int anno, string genero, string puntuacion,
+                   string presentacion) {
   this->nombre = nombre;
   this->anno = anno;
   this->genero = genero;
@@ -69,8 +75,18 @@ string Pelicula::getPuntuacion() { return puntuacion; }
 string Pelicula::getPresentacion() { return presentacion; }
 
 // Setters
-void Pelicula::setPresentacion(string presentacion2){
+void Pelicula::setPresentacion(string presentacion2) {
   presentacion = presentacion2;
+}
+
+void Pelicula::setNombre(string nuevoNombre) { nombre = nuevoNombre; }
+
+void Pelicula::setAnno(int nuevoAnno) { anno = nuevoAnno; }
+
+void Pelicula::setGenero(string nuevoGenero) { genero = nuevoGenero; }
+
+void Pelicula::setPuntuacion(string nuevaPuntuacion) {
+  puntuacion = nuevaPuntuacion;
 }
 
 // Generar una carta descrptiva
@@ -85,11 +101,12 @@ void Pelicula::generarCarta() {
 }
 
 // Métodos para comentarios
-void Pelicula::agregarComentario(const Comentario& comentario) {
-    comentarios.push_back(comentario);
+void Pelicula::agregarComentario(string nombreUsuario, int puntuacion,
+                                 string comentario) {
+  Comentario nuevoComentario(nombreUsuario, puntuacion, comentario);
+  comentarios.push_back(nuevoComentario);
 }
 
-const vector<Comentario>& Pelicula::getComentarios() const {
-    return comentarios;
+const vector<Comentario> &Pelicula::getComentarios() const {
+  return comentarios;
 }
-

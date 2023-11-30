@@ -15,6 +15,14 @@ public:
   // Atributos publicos
   Registro();
 
+  // Getters
+  string getUsuarioNube();
+  string getContrasenaNube();
+
+  // Setters
+  void setUsuarioNube(string);
+  void setContrasenaNube(string);
+
   // Metodos
   bool verificador(string usuario, string contrasena);
 };
@@ -24,6 +32,20 @@ Registro::Registro() {
 
   usuarioNube = "usuario01";
   contrasenaNube = "123";
+}
+
+// Getters
+string Registro::getUsuarioNube() { return usuarioNube; }
+
+string Registro::getContrasenaNube() { return contrasenaNube; }
+
+// Setters
+void Registro::setUsuarioNube(string nuevoUsuario) {
+  usuarioNube = nuevoUsuario;
+}
+
+void Registro::setContrasenaNube(string nuevaContrasena) {
+  contrasenaNube = nuevaContrasena;
 }
 
 // Verificando los datos
